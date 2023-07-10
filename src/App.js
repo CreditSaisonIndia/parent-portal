@@ -1,24 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
+import Signin from './Signin';
+import { Amplify } from 'aws-amplify';
 
 function App() {
+
+  Amplify.configure({
+    aws_cognito_region: 'us-east-1',
+    aws_user_pools_id: 'us-east-1_qY0eJKuWO',
+    aws_user_pools_web_client_id: 'ulab4268c8852f8bgsfbf5jgl',
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Routes>
+    <Route index path="/" element={<Signin/>} />
+    </Routes>
   );
 }
 
