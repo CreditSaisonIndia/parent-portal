@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
-import Signin from './Signin';
-import { Amplify } from 'aws-amplify';
 
-function App() {
+import React from 'react';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import AppHeader from './AppHeader';
+import MicroFrontend from './MicroFrontend';
+import About from './About';
 
-  Amplify.configure({
-    aws_cognito_region: 'us-east-1',
-    aws_user_pools_id: 'us-east-1_qY0eJKuWO',
-    aws_user_pools_web_client_id: 'ulab4268c8852f8bgsfbf5jgl',
-  });
+// const {
+//   REACT_APP_BROWSE_HOST: browseHost,
+//   REACT_APP_RESTAURANT_HOST: restaurantHost,
+//   REACT_APP_CREATEREACTAPP_HOST: process.en,
+// } = process.env;
 
-  return (
-    
-    <Routes>
-    <Route index path="/" element={<Signin/>} />
-    </Routes>
-  );
-}
+const {
+  REACT_APP_BROWSE_HOST: browseHost,
+  REACT_APP_RESTAURANT_HOST: restaurantHost,
+  REACT_APP_FCUPORTAL_HOST: fcuPortalHost,
+} = process.env;
+
+console.log(fcuPortalHost);
+
+const FcuPortal = ({ history }) => (
+  <MicroFrontend history={history} host={fcuPortalHost} name="FcuPortal" />
+);
+
+const App = () => (
+  <BrowserRouter>
+    <React.Fragment>
+      <AppHeader />
+      <Routes>
+        <Route exact path="/" element={<About/>} />
+        <Route exact path="/fcuPortal" element={<FcuPortal/>} />
+      </Routes>
+    </React.Fragment>
+  </BrowserRouter>
+);
 
 export default App;
