@@ -13,7 +13,6 @@ class MicroFrontend extends React.Component {
 
     fetch(`fcu/asset-manifest.json`,{
       method: "GET",
-      mode: "cors",
     })
       .then(res => res.json())
       .then(manifest => {
