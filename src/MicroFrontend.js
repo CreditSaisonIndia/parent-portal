@@ -11,7 +11,10 @@ class MicroFrontend extends React.Component {
       return;
     }
 
-    fetch(`${host}/asset-manifest.json`)
+    fetch(`${host}/asset-manifest.json`,{
+      method: "GET",
+      mode: "cors",
+    })
       .then(res => res.json())
       .then(manifest => {
         console.log(manifest, 'manifest');
