@@ -21,7 +21,7 @@ class MicroFrontend extends React.Component {
 
         script.id = scriptId;
         script.crossOrigin = '';
-        script.src = `${host}${manifest['files']['main.js']}`;
+        script.src = `fcu${manifest['files']['main.js']}`;
         script.onload = this.renderMicroFrontend;
         document.head.appendChild(script);
       })
