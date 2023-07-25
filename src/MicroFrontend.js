@@ -4,12 +4,17 @@ class MicroFrontend extends React.Component {
   componentDidMount() {
     const { name, host, document } = this.props;
     const scriptId = `micro-frontend-script-${name}`;
+    // const styleId = `micro-frontend-style-${name}`;
     console.log(name, host, document, "heree");
 
     if (document.getElementById(scriptId)) {
       this.renderMicroFrontend();
       return;
     }
+    // if (document.getElementById(styleId)) {
+    //   this.renderMicroFrontend();
+    //   return;
+    // }
 
     fetch(`fcu/asset-manifest.json`,{
       method: "GET",
@@ -18,12 +23,19 @@ class MicroFrontend extends React.Component {
       .then(manifest => {
         console.log(manifest, 'manifest');
         const script = document.createElement('script');
+        const linkforCSSfile = document.createElement("link")
+
+        linkforCSSfile.href = `fcu${manifest['files']['main.css']}`
+        linkforCSSfile.type = 'text/css'
+        linkforCSSfile.rel = 'stylesheet'
 
         script.id = scriptId;
         script.crossOrigin = '';
         script.src = `fcu${manifest['files']['main.js']}`;
         script.onload = this.renderMicroFrontend;
+
         document.head.appendChild(script);
+        document.head.appendChild(linkforCSSfile)
       })
       
   }
