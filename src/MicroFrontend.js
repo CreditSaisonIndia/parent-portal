@@ -15,28 +15,53 @@ class MicroFrontend extends React.Component {
     //   this.renderMicroFrontend();
     //   return;
     // }
-
-    fetch(`fcu/asset-manifest.json`,{
-      method: "GET",
-    })
-      .then(res =>res.json())
-      .then(manifest => {
-        console.log(manifest, 'manifest');
-        const script = document.createElement('script');
-        const linkforCSSfile = document.createElement("link")
-
-        linkforCSSfile.href = `fcu${manifest['files']['main.css']}`
-        linkforCSSfile.type = 'text/css'
-        linkforCSSfile.rel = 'stylesheet'
-
-        script.id = scriptId;
-        script.crossOrigin = '';
-        script.src = `fcu${manifest['files']['main.js']}`;
-        script.onload = this.renderMicroFrontend;
-
-        document.head.appendChild(script);
-        document.head.appendChild(linkforCSSfile)
+    if (name === 'FcuPortal'){
+      fetch(`fcu/asset-manifest.json`,{
+        method: "GET",
       })
+        .then(res =>res.json())
+        .then(manifest => {
+          console.log(manifest, 'manifest');
+          const script = document.createElement('script');
+          const linkforCSSfile = document.createElement("link")
+  
+          linkforCSSfile.href = `fcu${manifest['files']['main.css']}`
+          linkforCSSfile.type = 'text/css'
+          linkforCSSfile.rel = 'stylesheet'
+  
+          script.id = scriptId;
+          script.crossOrigin = '';
+          script.src = `fcu${manifest['files']['main.js']}`;
+          script.onload = this.renderMicroFrontend;
+  
+          document.head.appendChild(script);
+          document.head.appendChild(linkforCSSfile)
+        })
+    }
+    else{
+      fetch(`dsa/asset-manifest.json`,{
+        method: "GET",
+      })
+        .then(res =>res.json())
+        .then(manifest => {
+          console.log(manifest, 'manifest');
+          const script = document.createElement('script');
+          const linkforCSSfile = document.createElement("link")
+  
+          linkforCSSfile.href = `dsa${manifest['files']['main.css']}`
+          linkforCSSfile.type = 'text/css'
+          linkforCSSfile.rel = 'stylesheet'
+  
+          script.id = scriptId;
+          script.crossOrigin = '';
+          script.src = `dsa${manifest['files']['main.js']}`;
+          script.onload = this.renderMicroFrontend;
+  
+          document.head.appendChild(script);
+          document.head.appendChild(linkforCSSfile)
+    })
+  }
+    
       
   }
 

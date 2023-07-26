@@ -27,7 +27,7 @@ Amplify.configure({
 
 const {
   REACT_APP_BROWSE_HOST: browseHost,
-  REACT_APP_RESTAURANT_HOST: restaurantHost,
+  REACT_APP_DSAPORTAL_HOST: dsaPortalHost,
   REACT_APP_FCUPORTAL_HOST: fcuPortalHost,
 } = process.env;
 
@@ -35,6 +35,10 @@ console.log(fcuPortalHost);
 
 const FcuPortal = ({ history }) => (
   <MicroFrontend history={history} host={fcuPortalHost} name="FcuPortal" />
+);
+
+const DsaPortal = ({ history }) => (
+  <MicroFrontend history={history} host={dsaPortalHost} name="DsaPortal" />
 );
 
 const App = () => (
@@ -47,6 +51,7 @@ const App = () => (
       <Route exact path="/" element={<Signin/>} />
         <Route exact path="/about" element={<About/>} />
         <Route exact path="/fcuPortal/*" element={<FcuPortal/>} />
+        <Route exact path="/dsaPortal/*" element={<DsaPortal/>} />
       </Routes>
     </React.Fragment>
     </Account>

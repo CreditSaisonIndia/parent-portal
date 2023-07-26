@@ -23,6 +23,29 @@ module.exports = function(app) {
        }
      })
    )
+
+   app.use(
+    '/dsa',
+    createProxyMiddleware({
+      target: 'http://localhost:4001',
+      changeOrigin: true,
+      pathRewrite: {
+        '/dsaPortal': '',
+        '/dsa': 'http://localhost:4001'
+      }
+    })
+  )
+
+  app.use(
+    '/dsaPortal/dsa',
+    createProxyMiddleware({
+      target: 'http://localhost:4001',
+      changeOrigin: true,
+      pathRewrite: {
+        '/dsaPortal/dsa': 'http://localhost:4001',
+      }
+    })
+  )
 };
 
 // module.exports = function(app) {

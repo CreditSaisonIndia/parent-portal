@@ -96,6 +96,9 @@ React.useEffect(()=>{
               Toast("", "Login Successfully", "success");
               var group = user.signInUserSession.idToken.payload['cognito:groups'][0]
               if (group === 'DSA'){
+                navigate("/dsaPortal")
+              }
+              else{
                 navigate("/fcuPortal")
               }
               // navigate("/dashboard")
