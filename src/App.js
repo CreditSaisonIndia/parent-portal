@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import AppHeader from './AppHeader';
 import MicroFrontend from './MicroFrontend';
 import About from './About';
+import Auth from './Auth';
 
 // const {
 //   REACT_APP_BROWSE_HOST: browseHost,
@@ -28,7 +29,8 @@ const App = () => (
     <React.Fragment>
       <AppHeader />
       <Routes>
-        <Route exact path="/" element={<About/>} />
+      <Route exact path="/" element={<Auth/>} />
+        <Route exact path="/about" element={<About/>} />
         <Route exact path="/fcuPortal" element={<FcuPortal/>} />
       </Routes>
     </React.Fragment>
