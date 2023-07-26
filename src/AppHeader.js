@@ -5,9 +5,9 @@ import './AppHeader.css';
 const AppHeader = () => (
   <header>
     <div className="center-column">
-      <h1>🍽 MicroFrontend</h1>
+      <h1 style={{paddingLeft:'35%'}}>MotherShip</h1>
     </div>
-    <nav>
+    {/* <nav>
       <ol className="center-column">
         <li>
           <NavLink to="/fcuPortal">FCU Portal</NavLink>
@@ -16,7 +16,7 @@ const AppHeader = () => (
           <NavLink to="/about">About</NavLink>
         </li>
       </ol>
-    </nav>
+    </nav> */}
   </header>
 );
 

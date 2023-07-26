@@ -19,7 +19,7 @@ class MicroFrontend extends React.Component {
     fetch(`fcu/asset-manifest.json`,{
       method: "GET",
     })
-      .then(res => res.json())
+      .then(res =>res.json())
       .then(manifest => {
         console.log(manifest, 'manifest');
         const script = document.createElement('script');
