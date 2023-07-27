@@ -16,7 +16,7 @@ class MicroFrontend extends React.Component {
     //   return;
     // }
     if (name === 'FcuPortal'){
-      fetch(`fcu/asset-manifest.json`,{
+      fetch(`${window.location.protocol}://${window.location.hostname}/fcu/asset-manifest.json`,{
         method: "GET",
       })
         .then(res =>res.json())
@@ -39,7 +39,7 @@ class MicroFrontend extends React.Component {
         })
     }
     else{
-      fetch(`dsa/asset-manifest.json`,{
+      fetch(`${window.location.protocol}://${window.location.hostname}/dsa/asset-manifest.json`,{
         method: "GET",
       })
         .then(res =>res.json())
