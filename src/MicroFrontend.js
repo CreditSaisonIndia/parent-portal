@@ -15,8 +15,9 @@ class MicroFrontend extends React.Component {
     //   this.renderMicroFrontend();
     //   return;
     // }
+    var parentUrl = `${window.location.protocol}//${window.location.href.split('/')[2]}`
     if (name === 'FcuPortal'){
-      fetch(`${window.location.protocol}//${window.location.href.split('/')[2]}/fcu/asset-manifest.json`,{
+      fetch(`${parentUrl}/fcu/asset-manifest.json`,{
         method: "GET",
       })
         .then(res =>res.json())
@@ -25,13 +26,13 @@ class MicroFrontend extends React.Component {
           const script = document.createElement('script');
           const linkforCSSfile = document.createElement("link")
   
-          linkforCSSfile.href = `fcu${manifest['files']['main.css']}`
+          linkforCSSfile.href = `${parentUrl}/fcu${manifest['files']['main.css']}`
           linkforCSSfile.type = 'text/css'
           linkforCSSfile.rel = 'stylesheet'
   
           script.id = scriptId;
           script.crossOrigin = '';
-          script.src = `fcu${manifest['files']['main.js']}`;
+          script.src = `${parentUrl}/fcu${manifest['files']['main.js']}`;
           script.onload = this.renderMicroFrontend;
   
           document.head.appendChild(script);
@@ -40,7 +41,7 @@ class MicroFrontend extends React.Component {
     }
     else{
 
-      fetch(`${window.location.protocol}//${window.location.href.split('/')[2]}/dsa/asset-manifest.json`,{
+      fetch(`${parentUrl}/dsa/asset-manifest.json`,{
         method: "GET",
       })
         .then(res =>res.json())
@@ -49,13 +50,13 @@ class MicroFrontend extends React.Component {
           const script = document.createElement('script');
           const linkforCSSfile = document.createElement("link")
   
-          linkforCSSfile.href = `dsa${manifest['files']['main.css']}`
+          linkforCSSfile.href = `${parentUrl}/dsa${manifest['files']['main.css']}`
           linkforCSSfile.type = 'text/css'
           linkforCSSfile.rel = 'stylesheet'
   
           script.id = scriptId;
           script.crossOrigin = '';
-          script.src = `dsa${manifest['files']['main.js']}`;
+          script.src = `${parentUrl}/dsa${manifest['files']['main.js']}`;
           script.onload = this.renderMicroFrontend;
   
           document.head.appendChild(script);
