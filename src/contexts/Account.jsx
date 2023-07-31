@@ -66,7 +66,7 @@ export const Account = (props) => {
                 handleSignOut()
                 setUser(null)
                 Toast('', 'logging out', 'success')
-                navigate('/signin')
+                navigate('/')
             })
             .catch(error => {
                 console.log(error)

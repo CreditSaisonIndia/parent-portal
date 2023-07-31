@@ -1,9 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './AppHeader.css';
+import { useAuth } from './contexts/Account';
 
-const AppHeader = () => (
-  <header>
+const AppHeader = () => {
+  const {signOut} = useAuth()
+  
+  // return 
+    return <header>
     <div className="center-column">
       <h1 style={{paddingLeft:'35%'}}>MotherShip</h1>
     </div>
@@ -17,7 +21,8 @@ const AppHeader = () => (
         </li>
       </ol>
     </nav> */}
+    <button onClick={()=>signOut()}>Logout</button>
   </header>
-);
+};
 
 export default AppHeader;
